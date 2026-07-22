@@ -28,19 +28,21 @@ const sizeStyles: Record<ButtonSizes, string> = {
 
 /* Define props for component */
 interface ButtonProps {
-    label: string,
-    color: ButtonColors,
-    size: ButtonSizes,
-    className: string
+    label?: string,
+    color?: ButtonColors,
+    size?: ButtonSizes,
+    className?: string
+    onClick?: () => void
 }
 
 
 /* Define component and export it */
 const Button = ({
-    label,
-    color,
-    size,
-    className
+    label = "Click me...",
+    color = "primary",
+    size = "sm",
+    className,
+    onClick
 }: ButtonProps) => {
     return (
         <button

@@ -15,3 +15,4 @@ node_modules/
 
 *storybook.log
 storybook-static
+src/components/stories
