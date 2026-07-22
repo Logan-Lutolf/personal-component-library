@@ -1,0 +1,14 @@
+:root {
+    --background: #242526;
+    --background-dim: #292A2C;
+
+    --foreground: #FDFDFD;
+    --foreground-dim: #E4E8EA;
+    
+    --primary: #9A5F97;
+    --secondary: #A67882;
+    
+    --success: #4FA99D;
+    --destructive: #EA495E;
+    --disabled: #686B6E;
+}; 
