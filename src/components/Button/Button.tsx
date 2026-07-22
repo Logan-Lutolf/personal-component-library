@@ -1,8 +1,9 @@
 import cn from 'clsx'
 
+
 /* Define options for component */
 const options = {
-    variants: ["primary", "secondary", "destructive", "ghost"],
+    variants: ["primary", "secondary", "destructive", "ghost"],  
     sizes: ["sm", "lg"]  // extend to more sizes later
 }
 
@@ -14,15 +15,15 @@ type ButtonSizes = typeof options.sizes[number];
 
 /* Define styles for options */
 const colorStyles: Record<ButtonColors, string> = {
-    primary: "",
-    secondary: "",
-    destructive: "",
-    ghost: ""
+    primary: "bg-(--primary) text-white",
+    secondary: "bg-(--secondary) text-white",
+    destructive: "bg-(--destructive) text-white",
+    ghost: "border border-(--primary) hover:bg-(--primary)/13 text-(--primary) active:bg-(--primary)/40"
 }
 
 const sizeStyles: Record<ButtonSizes, string> = {
-    sm: "",
-    lg: ""
+    sm: "px-4 py-3 text-sm rounded-2xl",
+    lg: "px-6 py-3 text-lg rounded-2xl"
 }
 
 
@@ -47,10 +48,10 @@ const Button = ({
     return (
         <button
             className={cn(
-                colorStyles[color],
                 sizeStyles[size],
                 className,
-                ""
+                "cursor-pointer transition duration-200 active:opacity-65 hover:opacity-85",  // Maybe hover/actions later
+                colorStyles[color]
             )}
         >
             {label}
