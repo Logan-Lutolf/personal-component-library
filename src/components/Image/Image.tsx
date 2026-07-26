@@ -9,23 +9,33 @@ interface ImageProps extends React.HTMLAttributes<HTMLImageElement>{
 }
 
 
+const ImageContext = createContext<boolean | null>(null)
+
 const Image = ({
     children,
     className,
     imageUrl,
     ...props
 }: ImageProps) => {
-    const hoverStyles = useContext(ImageCoverContext) ? "zoom-50" : ""
-    
+    const [hover, setHover] = useState(false)
+
+    const zoomStyles = hover ? "scale-115" : ""
+
     return(
-        <div className={twMerge("", className, hoverStyles)}>
-            {children}
-            <img
-                className="w-full h-full"
-                src={imageUrl}
-                {...props}
-            />
-        </div>
+        <ImageContext.Provider value={hover}>
+            <div 
+                className={twMerge("relative h-full w-full overflow-hidden cursor-pointer", className)}
+                onMouseEnter={() => setHover(true)}
+                onMouseLeave={() => setHover(false)}
+            >
+                {children}
+                <img
+                    className={twMerge("w-full h-full hover:opacity-75 transition duration-200 hover:scale-205 object-cover", zoomStyles)}
+                    src={imageUrl}
+                    {...props}
+                />
+            </div>
+        </ImageContext.Provider>
     )
 }
 
@@ -36,15 +46,14 @@ interface ImageChildrenProps {
 }
 
 
-const ImageCoverContext = createContext<boolean | null>(false)
-const ImageCover = ({children, className}: ImageChildrenProps) => {
-    var hoverContext = useContext(ImageCoverContext)
+
+const ImageInfo = ({children, className}: ImageChildrenProps) => {
+    const ctx = useContext(ImageContext)
+    const hoverStyles = ctx ? "hover:opacity-100 transition duration-200" : ""
     
     return (
         <div 
-            onMouseEnter={() => {hoverContext = true}}
-            onMouseLeave={() => {hoverContext = false}}
-            className={twMerge("top-0 left-0 right-0 bottom-0 pacity-0 hover:opacity-75 transition duration-200 absolute flex flex-col items-center justify-center bg-amber-200", className)}
+            className={twMerge("z-10 absolute inset-0 opacity-0 bg-(--background-dim)/50", className, hoverStyles)}
         >
             {children}
         </div>
@@ -52,16 +61,6 @@ const ImageCover = ({children, className}: ImageChildrenProps) => {
 }
 
 
-const ImageInfo = ({children, className}: ImageChildrenProps) => {
-    return (
-        <div className={twMerge("", className)}>
-            {children}
-        </div>
-    )
-}
-
-
-Image.Cover = ImageCover
 Image.Info = ImageInfo
 
 export default Image
