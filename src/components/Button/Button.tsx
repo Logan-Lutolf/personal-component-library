@@ -1,4 +1,5 @@
-import cn from 'clsx'
+// use cva
+import { twMerge } from 'tailwind-merge';
 
 
 /* Define options for component */
@@ -47,7 +48,8 @@ const Button = ({
 }: ButtonProps) => {
     return (
         <button
-            className={cn(
+            onClick={onClick}
+            className={twMerge(
                 sizeStyles[size],
                 className,
                 "cursor-pointer transition duration-200 active:opacity-65 hover:opacity-85",  // Maybe hover/actions later
