@@ -17,7 +17,7 @@ const useInputContext = () => {
 }
 
 
-interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {  // #TOD
+interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {  // #TODO
     children?: React.ReactNode,
     className?: string
 }

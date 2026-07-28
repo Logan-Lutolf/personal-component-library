@@ -11,8 +11,11 @@ Thumbs.db
 
 # Dependencies
 node_modules/
+dist/
 .storybook/
+
 
 *storybook.log
 storybook-static
 src/components/stories
+

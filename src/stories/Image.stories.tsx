@@ -1,5 +1,5 @@
-import { Meta, StoryObj } from '@storybook/react-vite'
-import Image from '../components/Image/Image'
+import type { Meta, StoryObj } from '@storybook/react-vite'
+import Image from '../components/Image/Image.js'
 
 const meta = {
     component: Image,
@@ -18,11 +18,11 @@ export const Default: Story = {
     
     render: () => (
         <Image 
-            imageUrl="https://tse4.mm.bing.net/th/id/OIP.ayACpdslq2Oq9hSUQnfMWQHaF1?r=0&rs=1&pid=ImgDetMain&o=7&rm=3" 
+            imageUrl="https://images.pexels.com/photos/31284696/pexels-photo-31284696.jpeg?cs=srgb&dl=pexels-optical-chemist-340351297-31284696.jpg&fm=jpg" 
             className="w-50"
         >
             <Image.Info className="flex flex-col items-center justify-center text-white">
-                <p>Ryan</p>
+                <p>Caption</p>
                 <p className="text-xs font-light">07/26/2026</p>
             </Image.Info>
         </Image>
