@@ -7,6 +7,7 @@
   "type": "module",
   "main": "dist/index.js",
   "types": "types/types.d.ts",
+  "files": ["dist/"],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "storybook": "storybook dev -p 6006",
